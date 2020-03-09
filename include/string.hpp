@@ -5,6 +5,7 @@
 
 #include <cstddef>
 #include <iostream>
+#include <utility>
 
 class String {
  public:
@@ -18,7 +19,7 @@ class String {
   String(const String &rhs);
 
   /// Пользовательский конструктор
-  String(const char *data1);
+  explicit String(const char *data1);
 
   /// Оператор присваивания
   String &operator=(const String &rhs);

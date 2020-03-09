@@ -77,8 +77,9 @@ void String::crop(bool t) {
 /// Функция увеличения размера
 void String::resize(size_t n) {
   char *data1 = new char[n];
-  if (n > 0)
+  if (n > 0) {
     for (size_t i = 0; i < length; i++) data1[i] = data[i];
+  }
   delete[] data;
   data = data1;
   length = n;
