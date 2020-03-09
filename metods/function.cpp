@@ -6,19 +6,16 @@ size_t String::Find(const String &substr) const {
   size_t i = 0, j = 0;
   for (i = 0; i < length; i++) {
     if (substr.length == 1) {
-      if (data[i] == substr[0])
-        return i;
+      if (data[i] == substr[0]) return i;
     } else {
-      if (j == substr.Size())
-        return i - substr.length + 1;
+      if (j == substr.Size()) return i - substr.length;
       if (data[i] == substr[j])
         j++;
       else
         j = 0;
     }
   }
-  if (j == substr.Size())
-    return i - substr.length;
+  if (j == substr.Size()) return i - substr.length;
   return -1;
 }
 
@@ -35,24 +32,20 @@ size_t String::Size() const { return length; }
 bool String::Empty() const { return (length == 0); }
 
 void String::RTrim(char symbol) {
-  while (data[length-1] == symbol)
-    crop(true);
+  while (data[length - 1] == symbol) crop(true);
 }
 
 void String::LTrim(char symbol) {
-  while (data[0] == symbol)
-    crop(false);
+  while (data[0] == symbol) crop(false);
 }
 
 /// Функция для "обмена" строк
 void String::swap(String &oth) {
-  size_t len=length, ot=oth.Size();
+  size_t len = length, ot = oth.Size();
   char *data1 = new char[oth.length];
-  for (size_t i = 0; i < oth.length; i++)
-    data1[i] = oth[i];
+  for (size_t i = 0; i < oth.length; i++) data1[i] = oth[i];
   char *oth1 = new char[length];
-  for (size_t i = 0; i < length; i++)
-    oth1[i] = data[i];
+  for (size_t i = 0; i < length; i++) oth1[i] = data[i];
   delete[] oth.data;
   delete[] data;
   data = data1;
@@ -71,12 +64,10 @@ std::ostream &operator<<(std::ostream &out, const String &str) {
 void String::crop(bool t) {
   char *data1 = new char[length - 1];
   if (t) {
-    for (size_t i = 0; i < length - 1; i++)
-      data1[i] = data[i];
+    for (size_t i = 0; i < length - 1; i++) data1[i] = data[i];
 
   } else {
-    for (size_t i = 1; i < length; i++)
-      data1[i-1] = data[i];
+    for (size_t i = 1; i < length; i++) data1[i - 1] = data[i];
   }
   delete[] data;
   data = data1;
