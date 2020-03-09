@@ -34,7 +34,6 @@ add_library(02-lab-01-string-Alyonkachocolate STATIC
 
 add_executable(tests
         ${CMAKE_CURRENT_SOURCE_DIR}/tests/string_unittest.cpp
-        ${CMAKE_CURRENT_SOURCE_DIR}/tests/test.cpp
         )
 
 target_include_directories(02-lab-01-string-Alyonkachocolate

@@ -150,9 +150,6 @@
 		<Unit filename="/Users/user/CLionProjects/02-lab-01-string-Alyonkachocolate/tests/string_unittest.cpp">
 			<Option target="tests"/>
 		</Unit>
-		<Unit filename="/Users/user/CLionProjects/02-lab-01-string-Alyonkachocolate/tests/test.cpp">
-			<Option target="tests"/>
-		</Unit>
 		<Unit filename="/Users/user/CLionProjects/02-lab-01-string-Alyonkachocolate/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>
 		</Unit>
