@@ -41,17 +41,8 @@ void String::LTrim(char symbol) {
 
 /// Функция для "обмена" строк
 void String::swap(String &oth) {
-  size_t len = length, ot = oth.Size();
-  char *data1 = new char[oth.length];
-  for (size_t i = 0; i < oth.length; i++) data1[i] = oth[i];
-  char *oth1 = new char[length];
-  for (size_t i = 0; i < length; i++) oth1[i] = data[i];
-  delete[] oth.data;
-  delete[] data;
-  data = data1;
-  length = ot;
-  oth.data = oth1;
-  oth.length = len;
+  std::swap(*this,oth);
+  std::swap(length,oth.length);
 }
 
 /// Функция вывода
