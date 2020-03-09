@@ -25,11 +25,9 @@ String &String::operator+=(const String &rhs) {
 
 String &String::operator*=(unsigned int m) {
   size_t len = length;
-  char *copy = new char[len];
-  for (size_t i = 0; i < len; i++) copy[i] = data[i];
   resize(length * m);
   for (unsigned int i = 1; i < m; i++)
-    for (size_t j = 0; j < len; j++) data[len * i + j] = copy[j];
+    for (size_t j = 0; j < len; j++) data[len * i + j] = data[j];
   return *this;
 }
 
