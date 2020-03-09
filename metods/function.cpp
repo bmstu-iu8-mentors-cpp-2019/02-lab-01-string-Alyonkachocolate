@@ -41,8 +41,8 @@ void String::LTrim(char symbol) {
 
 /// Функция для "обмена" строк
 void String::swap(String &oth) {
-  std::swap(*this,oth);
-  std::swap(length,oth.length);
+  std::swap(*this, oth);
+  std::swap(length, oth.length);
 }
 
 /// Функция вывода
