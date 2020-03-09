@@ -14,10 +14,10 @@ String::String(const String &rhs) : length(rhs.length) {
 }
 
 /// Пользовательский конструктор
-String::String(const char *data) {
-  while (data[length] != 0) {
+String::String(const char *data1) {
+  while (data1[length] != 0) {
     length++;
   }
-  this->data = new char[length];
-  for (size_t i = 0; i < length; i++) this->data[i] = data[i];
+  data = new char[length];
+  for (size_t i = 0; i < length; i++) data[i] = data1[i];
 }

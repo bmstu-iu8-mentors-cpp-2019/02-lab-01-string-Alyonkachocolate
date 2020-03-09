@@ -19,7 +19,7 @@ class String {
   String(const String &rhs);
 
   /// Пользовательский конструктор
-  explicit String(const char *data);
+  explicit String(const char *data1);
 
   /// Оператор присваивания
   String &operator=(const String &rhs);
