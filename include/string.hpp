@@ -18,7 +18,7 @@ class String {
   String(const String &rhs);
 
   /// Пользовательский конструктор
-  String(const char *data);
+  String(const char *data1);
 
   /// Оператор присваивания
   String &operator=(const String &rhs);
