@@ -1,6 +1,6 @@
 // Copyright 2019 Alyonkachocolate <Nyanyoka@yandex.ru>
+#include <cstring>
 #include "string.hpp"
-
 /// Деструктор
 String::~String() { delete[] data; }
 
