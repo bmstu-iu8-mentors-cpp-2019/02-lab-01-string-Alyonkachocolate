@@ -6,17 +6,19 @@ size_t String::Find(const String &substr) const {
   size_t i = 0, j = 0;
   for (i = 0; i < length; i++) {
     if (substr.length == 1) {
-      if (data[i] == substr[0]) return i;
+      if (data[i] == substr[0])
+        return i;
     } else {
-      if (j == substr.length - 1) {
+      if (j == substr.Size())
         return i - substr.length + 1;
-      }
       if (data[i] == substr[j])
         j++;
       else
         j = 0;
     }
   }
+  if (j == substr.Size())
+    return i - substr.length;
   return -1;
 }
 
@@ -44,16 +46,19 @@ void String::LTrim(char symbol) {
 
 /// Функция для "обмена" строк
 void String::swap(String &oth) {
+  size_t len=length, ot=oth.Size();
   char *data1 = new char[oth.length];
-  for (size_t i = 0; i < length; i++) data1[i] = oth[i];
+  for (size_t i = 0; i < oth.length; i++)
+    data1[i] = oth[i];
+  char *oth1 = new char[length];
+  for (size_t i = 0; i < length; i++)
+    oth1[i] = data[i];
+  delete[] oth.data;
   delete[] data;
   data = data1;
-  length = oth.length;
-  char *oth1 = new char[length];
-  for (size_t i = 0; i < length; i++) oth1[i] = data[i];
-  delete[] oth.data;
-  oth = oth1;
-  oth.length = length;
+  length = ot;
+  oth.data = oth1;
+  oth.length = len;
 }
 
 /// Функция вывода

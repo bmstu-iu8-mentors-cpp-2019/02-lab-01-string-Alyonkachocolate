@@ -68,7 +68,7 @@ String operator+(const String &a, const String &b) {
 String operator*(const String &a, unsigned int b) {
   String str(a);
   str.resize(a.Size() * b);
-  for (unsigned int i = 0; i < b - 1; i++)
+  for (unsigned int i = 1; i < b; i++)
     for (size_t j = 0; j < a.Size(); j++) str[a.Size() * i + j] = str[j];
   return str;
 }
