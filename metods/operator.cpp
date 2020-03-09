@@ -52,10 +52,7 @@ bool String::operator<(const String &rhs) const {
 
 char String::operator[](size_t index) const { return data[index]; }
 
-char &String::operator[](size_t index) {
-  char &t = data[index];
-  return t;
-}
+char &String::operator[](size_t index) { return data[index]; }
 
 String operator+(const String &a, const String &b) {
   String str(a);
