@@ -1,0 +1,9 @@
+"/Users/user/Library/Application Support/JetBrains/Toolbox/apps/CLion/ch-0/192.6817.18/CLion.app/Contents/bin/cmake/mac/bin/cmake" -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /Users/user/CLionProjects/02-lab-01-string-Alyonkachocolate
+-- [hunter] Calculating Toolchain-SHA1
+-- [hunter] Calculating Config-SHA1
+-- [hunter] HUNTER_ROOT: /Users/user/.hunter
+-- [hunter] [ Hunter-ID: 9a3594a | Toolchain-ID: 7e73122 | Config-ID: c351cc1 ]
+-- [hunter] GTEST_ROOT: /Users/user/.hunter/_Base/9a3594a/7e73122/c351cc1/Install (ver.: 1.8.0-hunter-p11)
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /Users/user/CLionProjects/02-lab-01-string-Alyonkachocolate/cmake-build-debug

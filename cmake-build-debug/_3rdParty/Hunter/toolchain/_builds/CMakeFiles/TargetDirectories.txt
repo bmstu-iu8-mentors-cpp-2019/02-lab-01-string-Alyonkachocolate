@@ -1,0 +1,2 @@
+/Users/user/CLionProjects/02-lab-01-string-Alyonkachocolate/cmake-build-debug/_3rdParty/Hunter/toolchain/_builds/CMakeFiles/rebuild_cache.dir
+/Users/user/CLionProjects/02-lab-01-string-Alyonkachocolate/cmake-build-debug/_3rdParty/Hunter/toolchain/_builds/CMakeFiles/edit_cache.dir
