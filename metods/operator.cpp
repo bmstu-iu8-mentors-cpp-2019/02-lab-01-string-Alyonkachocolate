@@ -18,16 +18,19 @@ String &String::operator=(const String &rhs) {
 
 String &String::operator+=(const String &rhs) {
   resize(length + rhs.length);
-  for (size_t i = 0; i < rhs.length; i++) data[length + i] = rhs[i];
+  for (size_t i = 0; i < rhs.length; i++) data[length-rhs.length + i] = rhs[i];
   return *this;
 }
 
 String &String::operator*=(unsigned int m) {
+  size_t len=length;
+  char* copy = new char[len];
+  for (size_t i = 0; i < len; i++)
+    copy[i] = data[i];
   resize(length * m);
-  char *copy = new char[length];
-  copy = data;
-  for (unsigned int i = 0; i < m - 1; i++)
-    for (size_t j = 0; j < length; j++) data[length * i + j] = copy[j];
+  for (unsigned int i = 1; i < m; i++)
+    for (size_t j = 0; j < len; j++)
+      data[len * i + j] = copy[j];
   return *this;
 }
 

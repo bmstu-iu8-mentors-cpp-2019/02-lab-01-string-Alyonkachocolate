@@ -33,19 +33,13 @@ size_t String::Size() const { return length; }
 bool String::Empty() const { return (length == 0); }
 
 void String::RTrim(char symbol) {
-  size_t i = length - 1;
-  while (data[i] == symbol) {
+  while (data[length-1] == symbol)
     crop(true);
-    i--;
-  }
 }
 
 void String::LTrim(char symbol) {
-  size_t i = 0;
-  while (data[i] == symbol) {
+  while (data[0] == symbol)
     crop(false);
-    i++;
-  }
 }
 
 /// Функция для "обмена" строк
@@ -65,25 +59,23 @@ void String::swap(String &oth) {
 /// Функция вывода
 std::ostream &operator<<(std::ostream &out, const String &str) {
   for (size_t i = 0; i < str.Size(); i++) out << str[i];
-  out << '\n';
   return out;
 }
 
 /// Функция удаления последнего/первого символа
 void String::crop(bool t) {
+  char *data1 = new char[length - 1];
   if (t) {
-    char *data1 = new char[length - 1];
-    for (size_t i = 0; i < length - 1; i++) data1[i] = data[i];
-    delete[] data;
-    data = data1;
-    length = length - 1;
+    for (size_t i = 0; i < length - 1; i++)
+      data1[i] = data[i];
+
   } else {
-    char *data1 = new char[length - 1];
-    for (size_t i = length - 1; i < 1; i--) data1[i] = data[i];
-    delete[] data;
-    data = data1;
-    length = length - 1;
+    for (size_t i = 1; i < length; i++)
+      data1[i-1] = data[i];
   }
+  delete[] data;
+  data = data1;
+  length = length - 1;
 }
 
 /// Функция увеличения размера
