@@ -37,16 +37,16 @@ class String {
   bool operator<(const String &rhs) const;
 
   /// Функция поиска подстроки
-  size_t Find(const String &substr) const;
+  [[nodiscard]] size_t Find(const String &substr) const;
 
   /// Функция замены символов, заменяет все символы oldSymbol на newSymbol.
   void Replace(char oldSymbol, char newSymbol);
 
   /// Функция возвращает длину строки
-  size_t Size() const;
+  [[nodiscard]] size_t Size() const;
 
   /// Функция для определения пуста ли строка
-  bool Empty() const;
+  [[nodiscard]] bool Empty() const;
 
   /// Оператор []
   char operator[](size_t index) const;
@@ -62,12 +62,12 @@ class String {
 
   friend std::ostream &operator<<(std::ostream &, const String &);
 
-  void resize(size_t n);
+
 
  private:
   size_t length = 0;
   char *data;
-
+  void resize(size_t n);
   explicit String(size_t n);
 
   void crop(bool t);  //удаляет символ 1 - справа, 0 - слева
