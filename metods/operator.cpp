@@ -3,31 +3,27 @@
 
 String &String::operator=(const String &rhs) {
   if (&rhs != this) {
-    if (length < rhs.length) {
+    if (length != rhs.length) {
       delete[] data;
       data = new char[rhs.length];
-      length = rhs.length;
     }
     length = rhs.length;
-    for (size_t i = 0; i < length; i++) {
-      data[i] = rhs[i];
-    }
+    std::copy(rhs.data, rhs.data + rhs.length, data);
   }
   return *this;
 }
 
 String &String::operator+=(const String &rhs) {
-  resize(length + rhs.length);
-  for (size_t i = 0; i < rhs.length; i++)
-    data[length - rhs.length + i] = rhs[i];
+  size_t len = length;
+  resize(len + rhs.length);
+  std::copy(rhs.data, rhs.data + rhs.length, data + len);
   return *this;
 }
 
 String &String::operator*=(unsigned int m) {
   size_t len = length;
-  resize(length * m);
-  for (unsigned int i = 1; i < m; i++)
-    for (size_t j = 0; j < len; j++) data[len * i + j] = data[j];
+  resize(len * m);
+  for (size_t i = 1; i < m; i++) std::copy(data, data + len, data + len * i);
   return *this;
 }
 
@@ -42,8 +38,8 @@ bool String::operator<(const String &rhs) const {
   if (length < rhs.length) return true;
   if (length > rhs.length) return false;
   for (size_t i = 0; i < length; i++) {
-    if (data[i] < rhs[i]) return true;
-    if (data[i] > rhs[i]) return false;
+    if (data[i] < rhs.data[i]) return true;
+    if (data[i] > rhs.data[i]) return false;
   }
   return false;
 }
@@ -54,32 +50,18 @@ char &String::operator[](size_t index) { return data[index]; }
 
 String operator+(const String &a, const String &b) {
   String str(a.length + b.length);
-  std::copy(a.data, a.data+a.length, str.data);
-  std::copy(b.data, b.data+b.length, str.data+a.length);
+  std::copy(a.data, a.data + a.length, str.data);
+  std::copy(b.data, b.data + b.length, str.data + a.length);
   return str;
 }
 
 String operator*(const String &a, unsigned int b) {
-  String str(a);
-  str.resize(a.Size() * b);
-  for (unsigned int i = 1; i < b; i++)
-    for (size_t j = 0; j < a.Size(); j++) str[a.Size() * i + j] = str[j];
+  String str(a.length * b);
+  for (size_t i = 0; i < b; i++)
+    std::copy(a.data, a.data + a.length, str.data + i * a.length);
   return str;
 }
 
-bool operator!=(const String &a, const String &b) {
-  if (a.Size() == b.Size()) return false;
-  for (size_t i = 0; i < a.Size(); i++)
-    if (a[i] == b[i]) return false;
-  return true;
-}
+bool operator!=(const String &a, const String &b) { return !(a == b); }
 
-bool operator>(const String &a, const String &b) {
-  if (a.Size() < b.Size()) return true;
-  if (a.Size() < b.Size()) return false;
-  for (size_t i = 0; i < a.Size(); i++) {
-    if (a[i] < b[i]) return true;
-    if (a[i] > b[i]) return false;
-  }
-  return false;
-}
+bool operator>(const String &a, const String &b) { return b < a; }
