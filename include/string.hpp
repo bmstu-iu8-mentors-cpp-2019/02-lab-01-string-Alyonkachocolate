@@ -67,13 +67,28 @@ class String {
  private:
   size_t length = 0;
   char *data;
+
+  explicit String (size_t n);
+
   void crop(bool t);  //удаляет символ 1 - справа, 0 - слева
+
+  /// Оператор +
+  friend String operator+(const String &a, const String &b);
+
+  /// Оператор *
+  friend String operator*(const String &a, unsigned int b);
+
+  /// Оператор !=
+  friend bool operator!=(const String &a, const String &b);
+
+  /// Оператор &gt;
+  friend bool operator>(const String &a, const String &b);
 };
 
 /// Оператор +
 String operator+(const String &a, const String &b);
 
-/// Оператор +
+/// Оператор *
 String operator*(const String &a, unsigned int b);
 
 /// Оператор !=

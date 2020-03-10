@@ -53,9 +53,9 @@ char String::operator[](size_t index) const { return data[index]; }
 char &String::operator[](size_t index) { return data[index]; }
 
 String operator+(const String &a, const String &b) {
-  String str(a);
-  str.resize(a.Size() + b.Size());
-  for (size_t i = 0; i < str.Size(); i++) str[a.Size() + i] = b[i];
+  String str(a.length + b.length);
+  std::copy(a.data, a.data+a.length, str.data);
+  std::copy(b.data, b.data+b.length, str.data+a.length);
   return str;
 }
 
