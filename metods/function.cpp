@@ -64,13 +64,13 @@ void String::crop(bool t) {
   length = length - 1;
 }
 
-/// Функция увеличения размера
+/// Функция изменения размера
 void String::resize(size_t n) {
-  char *data1 = new char[n];
-  if (n > 0) {
-    for (size_t i = 0; i < length; i++) data1[i] = data[i];
+  if (length != n) {
+    char *data1 = new char[n];
+    std::copy(data, data+std::min(length, n), data1);
+    delete[] data;
+    data = data1;
+    length = n;
   }
-  delete[] data;
-  data = data1;
-  length = n;
 }
