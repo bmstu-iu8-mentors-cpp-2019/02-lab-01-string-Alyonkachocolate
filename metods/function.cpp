@@ -31,11 +31,27 @@ size_t String::Size() const { return length; }
 bool String::Empty() const { return (length == 0); }
 
 void String::RTrim(char symbol) {
-  while (data[length - 1] == symbol) crop(true);
+  for (size_t i = length - 1; i >= 0; i--) {
+    if (data[i] != symbol) {
+      resize(i + 1);
+      return;
+    }
+  }
+  resize(0);
 }
 
 void String::LTrim(char symbol) {
-  while (data[0] == symbol) crop(false);
+  for (size_t i = 0; i < length; i++) {
+    if (data[i] != symbol) {
+      char *data1 = new char[length - i];
+      std::copy(data + i, data + length, data1);
+      delete[] data;
+      data = data1;
+      length -= i;
+      return;
+    }
+  }
+  resize(0);
 }
 
 /// Функция для "обмена" строк
@@ -50,25 +66,11 @@ std::ostream &operator<<(std::ostream &out, const String &str) {
   return out;
 }
 
-/// Функция удаления последнего/первого символа
-void String::crop(bool t) {
-  char *data1 = new char[length - 1];
-  if (t) {
-    for (size_t i = 0; i < length - 1; i++) data1[i] = data[i];
-
-  } else {
-    for (size_t i = 1; i < length; i++) data1[i - 1] = data[i];
-  }
-  delete[] data;
-  data = data1;
-  length = length - 1;
-}
-
 /// Функция изменения размера
 void String::resize(size_t n) {
   if (length != n) {
     char *data1 = new char[n];
-    std::copy(data, data+std::min(length, n), data1);
+    std::copy(data, data + std::min(length, n), data1);
     delete[] data;
     data = data1;
     length = n;
