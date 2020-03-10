@@ -3,19 +3,18 @@
 
 /// Функция поиска подстроки
 size_t String::Find(const String &substr) const {
-  size_t i = 0, j = 0;
-  for (i = 0; i < length; i++) {
-    if (substr.length == 1) {
-      if (data[i] == substr[0]) return i;
-    } else {
-      if (j == substr.Size()) return i - substr.length;
-      if (data[i] == substr[j])
-        j++;
-      else
-        j = 0;
+  if (substr.Empty()) return 0;
+  if (substr.length > length) return -1;
+  for (size_t i = 0; i < length - substr.length + 1; i++) {
+    bool ok = true;
+    for (size_t j = 0; j < substr.length; j++) {
+      if (data[i + j] != substr.data[j]) {
+        ok = false;
+        break;
+      }
     }
+    if (ok) return i;
   }
-  if (j == substr.Size()) return i - substr.length;
   return -1;
 }
 
