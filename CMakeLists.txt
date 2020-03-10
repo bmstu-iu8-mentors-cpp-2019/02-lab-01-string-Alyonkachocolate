@@ -28,9 +28,9 @@ hunter_add_package(GTest)
 find_package(GTest CONFIG REQUIRED)
 
 add_library(02-lab-01-string-Alyonkachocolate STATIC
-        ${CMAKE_CURRENT_SOURCE_DIR}/metods/constructors.cpp
-        ${CMAKE_CURRENT_SOURCE_DIR}/metods/function.cpp
-        ${CMAKE_CURRENT_SOURCE_DIR}/metods/operator.cpp)
+        ${CMAKE_CURRENT_SOURCE_DIR}/methods/constructors.cpp
+        ${CMAKE_CURRENT_SOURCE_DIR}/methods/function.cpp
+        ${CMAKE_CURRENT_SOURCE_DIR}/methods/operator.cpp)
 
 add_executable(tests
         ${CMAKE_CURRENT_SOURCE_DIR}/tests/string_unittest.cpp
