@@ -1,2 +1,0 @@
-/Library/Developer/CommandLineTools/usr/bin/ar qc lib02-lab-01-string-Alyonkachocolated.a  CMakeFiles/02-lab-01-string-Alyonkachocolate.dir/metods/constructors.cpp.o CMakeFiles/02-lab-01-string-Alyonkachocolate.dir/metods/function.cpp.o CMakeFiles/02-lab-01-string-Alyonkachocolate.dir/metods/operator.cpp.o
-/Library/Developer/CommandLineTools/usr/bin/ranlib lib02-lab-01-string-Alyonkachocolated.a
