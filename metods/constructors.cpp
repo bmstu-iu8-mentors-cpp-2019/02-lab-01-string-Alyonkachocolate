@@ -17,4 +17,4 @@ String::String(const char *data1) : String(strlen(data1)) {
   std::copy(data1, data1 + length, data);
 }
 
-String::String(size_t n) : length(n), data(new char[n]){}
+String::String(size_t n) : length(n), data(new char[n]) {}
