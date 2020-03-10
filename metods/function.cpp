@@ -31,11 +31,12 @@ size_t String::Size() const { return length; }
 bool String::Empty() const { return (length == 0); }
 
 void String::RTrim(char symbol) {
-  for (size_t i = length - 1; i >= 0; i--) {
+  for (size_t i = length - 1; ; i--) {
     if (data[i] != symbol) {
       resize(i + 1);
       return;
     }
+    if (i == 0) break;
   }
   resize(0);
 }
