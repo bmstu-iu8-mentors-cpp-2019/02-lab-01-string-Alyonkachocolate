@@ -46,7 +46,7 @@ void String::swap(String &oth) {
 
 /// Функция вывода
 std::ostream &operator<<(std::ostream &out, const String &str) {
-  for (size_t i = 0; i < str.Size(); i++) out << str[i];
+  for (size_t i = 0; i < str.Size(); i++) out << str.data[i];
   return out;
 }
 
